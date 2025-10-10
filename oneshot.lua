@@ -37,7 +37,7 @@ spawn(function()
                     if hrp and plrhrp and (hrp.Position - plrhrp.Position).Magnitude <= getgenv().Config["Radius"] then
                         if v.Health < v.MaxHealth and not killQueue[v] then
                             killQueue[v] = true
-                            task.delay(3, function()
+                            task.delay(0.1, function()
                                 if v and v.Health > 0 then
                                     v.Health = 0
                                 end
