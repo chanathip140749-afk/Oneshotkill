@@ -22,7 +22,7 @@ spawn(function()
                         
                         if MonPoz and PlayerPoz and (MonPoz - PlayerPoz).Magnitude <= getgenv().Config["Radius"] then
                             if v.Health < v.MaxHealth then
-                                wait(3)
+                                wait(.1)
                                 v.Health = 0
                             end
                         end
@@ -32,3 +32,5 @@ spawn(function()
         end)
     end
 end)
+
+wait(5)
