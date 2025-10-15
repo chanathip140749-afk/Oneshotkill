@@ -17,7 +17,7 @@ spawn(function()
                     if folder then
                         Den = folder:GetDescendants()
                     else
-                        warn("not found:", folderName)
+                        warn("⚠️ Folder not found:", folderName)
                         Den = {}
                     end
                 end
@@ -28,14 +28,17 @@ spawn(function()
                         if v.Parent == character then
                             continue
                         end
+                        -- ✅ Skip other players (optional)
+                        if game.Players:GetPlayerFromCharacter(v.Parent) then
+                            continue
+                        end
 
                         local MonPoz = v.Parent:FindFirstChild("HumanoidRootPart") and v.Parent.HumanoidRootPart.Position
                         local PlayerPoz = character:FindFirstChild("HumanoidRootPart") and character.HumanoidRootPart.Position
                         
                         if MonPoz and PlayerPoz and (MonPoz - PlayerPoz).Magnitude <= getgenv().Config["Radius"] then
-                            -- ✅ Also make sure it doesn’t try to kill dead or full-health mobs
-                            if v.Health > 0 and v.Health < v.MaxHealth then
-                                task.wait(0.1)
+                            if v.Health > 0 then
+                                task.wait(0.05)
                                 v.Health = 0
                             end
                         end
