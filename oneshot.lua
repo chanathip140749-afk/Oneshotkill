@@ -44,7 +44,7 @@ spawn(function()
 							-- ✅ Only kill if mob has already been hit (HP dropped)
 							if dist <= getgenv().Config["Radius"] and v.Health > 0 and v.Health < v.MaxHealth then
 								task.wait(0.05)
-								v.Health = 0
+								v.Health = 1
 							end
 						end
 					end
