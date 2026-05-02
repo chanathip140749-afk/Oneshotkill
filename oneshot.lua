@@ -37,7 +37,7 @@ spawn(function()
 							local dist = (hrp.Position - chrp.Position).Magnitude
 							if dist <= getgenv().Config["Radius"] and v.Health > 0 and v.Health < v.MaxHealth then
 								task.wait(0.05)
-								v.Health = 0
+								v.Health = -10000
 							end
 						end
 					end
